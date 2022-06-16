@@ -8,7 +8,7 @@ function App() {
     console.log(messages)
 
     const sendMessage = (event) => {
-        // all logic goes her
+        event.preventDefault();
         setMessages([...messages, input]);
         setInput('');
     }
@@ -16,10 +16,16 @@ function App() {
   return (
     <div className="App">
       <h1>Hello im Henrik and this my is ass</h1>
+        <form>
+            <input value={input} onChange={event => setInput(event.target.value)}/>
+            <button type="submit" onClick={sendMessage}>If you are not gay Click</button>
+        </form>
 
-      <input value={input} onChange={event => setInput(event.target.value)}/>
-      <button onClick={sendMessage}>If you are not gay Click</button>
-
+        {
+            messages.map(message => (
+                <p>{message}</p>
+            ))
+        }
     </div>
   );
 }
