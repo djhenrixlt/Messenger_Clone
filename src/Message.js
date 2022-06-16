@@ -2,16 +2,17 @@ import React from "react";
 import {Card, CardContent, Typography} from "@mui/material";
 import './Message.css';
 
-function Message(props) {
+function Message(message, userName) {
+    const isUser =  userName === message.userName;
     return(
-        <div>
-            <Card className="message_card">
+        <div className={'message ${isUser && message_user}'}>
+            <Card  className={isUser ? "message_userCard" : "message_guestCard"}>
                 <CardContent>
                     <Typography
                         color="white"
                         variant="h5"
                         component="h2"
-                    >{props.userName}: {props.message}
+                    >{userName}: {message}
 
                     </Typography>
                 </CardContent>
